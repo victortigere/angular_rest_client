@@ -1,0 +1,42 @@
+<form #clientupdateForm="ngForm" (ngSubmit)="updateClient()">
+     {{clientupdateForm.form.valid}}
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control"
+        required minlength="4" appForbiden="bob" 
+         [(ngModel)]="client.name" #name="ngModel" >
+    </div>
+
+    <div class="form-group">
+        <label for="name">Surname</label>
+        <input type="text" name="surname" class="form-control"
+        required minlength="4" appForbiden="bob"  
+         [(ngModel)]="client.surname" #surname="ngModel" >
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control"
+        required minlength="7" appForbiden="bob@gmail.com"  
+         [(ngModel)]="client.email" #email="ngModel" >
+    </div>
+
+    <div class="form-group">
+        <label for="mobile_number">Mobile Number</label>
+        <input type="text" name="mobile_number" class="form-control"
+        required minlength="10" appForbiden="00000000"  
+         [(ngModel)]="client.mobileNumber" #mobile_number="ngModel" >
+    </div>
+
+     <div class="row">
+         <div class="col-md-3">
+            <button class="btn btn-dark btn-sm mt-4" [disabled]="clientupdateForm.form.invalid">Update</button>
+         </div>
+         <div class="col-md-3">
+            <button class="btn btn-dark btn-sm mt-4" routerLink="">Back To Clients</button>
+         </div>
+     </div>
+
+    
+ 
+</form>

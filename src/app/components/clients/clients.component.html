@@ -1,0 +1,59 @@
+<form #clientForm="ngForm" (ngSubmit)="saveClient()">
+
+    <!-- {{clientForm.form.valid}} -->
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" class="form-control" 
+        required minlength="4" appForbiden="bob" 
+        [(ngModel)]="client.name" #name="ngModel" >
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">Surname</label>
+        <input type="text" id="surname" name="surname" class="form-control"
+        required minlength="4" appForbiden="bob"  
+        [(ngModel)]="client.surname" #surname="ngModel" >
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control" 
+        required minlength="7" appForbiden="bob@gmail.com"  
+        [(ngModel)]="client.email" #email="ngModel" >
+    </div>
+
+    <div class="form-group">
+        <label for="mobile_number">Mobile Number</label>
+        <input type="text" name="mobile_number" class="form-control"
+        required minlength="10" appForbiden="00000000"  
+         [(ngModel)]="client.mobileNumber" #mobile_number="ngModel" >
+    </div>
+
+    <button [disabled]="clientForm.form.invalid" class="btn btn-dark btn-sm mt-4">Submit</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients"> 
+            <th scope="row">{{ client.id}}</th>
+            <td>{{ client.name}}</td>
+            <td>{{ client.surname}}</td>
+            <td>{{ client.email}}</td>
+            <td>{{ client.mobileNumber}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="deleteClient(client.id)">Delete</button></td>
+            <td><button class="btn btn-warning btn-sm mx-2" routerLink="edit/{{client.id}}">Edit</button></td>
+        </tr>
+    </tbody>
+
+</table>
